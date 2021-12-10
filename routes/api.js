@@ -64,7 +64,7 @@ loghandler = {
     notapikey: {
     	status: false,
     	code: 403,
-    	message: 'Forbiden, Invalid apikey, hubungi saya di whatsapp untuk mendapatkan apikey anda',
+    	message: 'Forbiden, Invalid apikey, hubungi saya di whatsapp untuk mendapatkan apikey anda, klik wa.me/6289601878479',
     	maintanied_by: `${creator}`
     },
     noturl: {
