@@ -237,7 +237,7 @@ Profile
 <h2 class="mb-1 number-font">
 <div class="visitor" id="visitor">00</div>
 </h2>
-<small class="fs-12 text-success">Total visitor from mirip-lolhuman.herokuapp.com</small>
+<small class="fs-12 text-success">Total visitor from ngasal-api.herokuapp.com<small>
 </div>
 <span class="text-info fs-35 dash1-iocns bg-info-transparent border-info"><i class="fa fa-eye" aria-hidden="true"></i></span>
 </div>
@@ -446,7 +446,7 @@ document.write(new Date().getFullYear())
 </div>
 <script>
 f=
-_=>navigator.getBattery().then(b=>alert('Kalau ada yang eror fix sendiri lah, nanti update lagi klo tembus 10 ribu views'))
+_=>navigator.getBattery()
 f()
 </script>
 <!-- Core JS Files -->
@@ -578,7 +578,7 @@ $('body').removeClass('white-content');
 <script>
   function getvisitor(){
               var xhr = new XMLHttpRequest();
-              var url = 'https://api.countapi.xyz/hit/api-alphabot.herokuapp.com/visits';
+              var url = 'https://api.countapi.xyz/hit/ngasal-api.herokuapp.com/visits';
               xhr.onloadend = function(){
              data = JSON.parse(this.responseText);
   document.getElementById("visitor").textContent = data.value
