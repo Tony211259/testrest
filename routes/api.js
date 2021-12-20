@@ -2896,6 +2896,90 @@ router.get('/live/prambors', async (req, res, next) => {
 }
 })
 
+router.get('/live/trax', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var text = req.query.page
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+        if(listkey.includes(apikey)){
+       aexm.covid()
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/live/deltafm', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var text = req.query.page
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+        if(listkey.includes(apikey)){
+       aexm.delta()
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/live/radio', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var text = req.query.page
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+        if(listkey.includes(apikey)){
+       aexm.radio1()
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/live/radio2', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var text = req.query.page
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+        if(listkey.includes(apikey)){
+       aexm.radio2()
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
 // other
 router.get('/other/ghstalk', async (req, res, next) => {
           var apikey = req.query.apikey
