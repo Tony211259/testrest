@@ -2854,7 +2854,7 @@ router.get('/islam/niatashar', async (req, res, next) => {
 })
 
 //game
-router.get('/game/tebakgambar', async (req, res, next) => {
+router.get('/live/hardrockfm', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.page
        	if(!apikey) return res.sendFile(__path + '/docs/403.html')
@@ -2869,6 +2869,27 @@ router.get('/game/tebakgambar', async (req, res, next) => {
          .catch(e => {
          	console.log(e);
          	res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/live/prambors', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var text = req.query.page
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+        if(listkey.includes(apikey)){
+       aexm.ongoing()
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
 })
 } else {
   res.sendFile(__path + '/docs/403.html')
