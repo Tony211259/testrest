@@ -1839,31 +1839,28 @@ router.get('/photooxy/shadow_text', async (req, res, next) => {
 })
 
 // search api
-router.get('/search/joox', async (req, res, next) => {
+router.get('/search/joox2', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.query
-       	if(!apikey) return res.sendFile(__path + '/docs/403.html')
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+        var q = req.query.query
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
          if(listkey.includes(apikey)){
-       fetch(encodeURI(`https://arnz-api-production.up.railway.app/api/joox/search?q=${text}`))
-        .then(response => response.json())
-        .then(data => {
-        var data = data;
-             res.json({
-             	message: `Ok`,
-             	status: `Success`,
-             	data,
-             	maintanied_by: `${creator}`
-             })
-         })
+       aexm.joox(q)
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
          .catch(e => {
-         	console.log(e);
-         	res.sendFile(__path + '/docs/503.html')
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
 })
 } else {
   res.sendFile(__path + '/docs/403.html')
 }
 })
+
 router.get('/search/wallpaper', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.query
