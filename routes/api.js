@@ -1839,6 +1839,30 @@ router.get('/photooxy/shadow_text', async (req, res, next) => {
 })
 
 // search api
+
+router.get('/search/mnc', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var q = req.query.query
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+         if(listkey.includes(apikey)){
+       aexm.mnc(q)
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+
 router.get('/search/joox2', async (req, res, next) => {
           var apikey = req.query.apikey
         var q = req.query.query
