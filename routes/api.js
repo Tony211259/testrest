@@ -2938,12 +2938,14 @@ router.get('/live/trax', async (req, res, next) => {
 }
 })
 
-router.get('/live/deltafm', async (req, res, next) => {
+
+router.get('/search/cnn', async (req, res, next) => {
           var apikey = req.query.apikey
-        var text = req.query.page
+        var q = req.query.query
         if(!apikey) return res.sendFile(__path + '/docs/403.html')
-        if(listkey.includes(apikey)){
-       aexm.delta()
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+         if(listkey.includes(apikey)){
+       aexm.delta(q)
   .then(data => {
     var result = data;
     res.json({
