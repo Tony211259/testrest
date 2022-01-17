@@ -1949,13 +1949,13 @@ router.get('/search/lirik', async (req, res, next) => {
 }
 })
 
-router.get('/search/lirik', async (req, res, next) => {
+router.get('/search/cnn', async (req, res, next) => {
           var apikey = req.query.apikey
         var q = req.query.query
         if(!apikey) return res.sendFile(__path + '/docs/403.html')
        if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
          if(listkey.includes(apikey)){
-       aexm.joox(q)
+       aexm.lirik2(q)
   .then(data => {
     var result = data;
     res.json({
@@ -1970,6 +1970,8 @@ router.get('/search/lirik', async (req, res, next) => {
   res.sendFile(__path + '/docs/403.html')
 }
 })
+
+
 router.get('/search/komiku', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.query
