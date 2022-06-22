@@ -27,6 +27,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "genius-lyrics-api": "^3.2.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
@@ -39,7 +40,7 @@
     "scrape-yt": "^1.4.8",
     "ssl-express-www": "^3.0.7",
     "urlencode": "^1.1.0",
-    "ytdl-core": "^4.4.5",
+    "ytdl-core": "^4.11.0",
     "ytpl": "^2.0.5"
   }
 }

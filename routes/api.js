@@ -541,22 +541,22 @@ router.get('/download/igstory', async (req, res, next) => {
   res.sendFile(__path + '/docs/403.html')
 }
 })
-router.get('/download/pinterest', async (req, res, next) => {
+router.get('/search/anon', async (req, res, next) => {
           var apikey = req.query.apikey
-          var url = req.query.q
-       	if(!apikey) return res.sendFile(__path + '/docs/403.html')
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter q"})
-        if(listkey.includes(apikey)){
+        var q = req.query.query
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+         if(listkey.includes(apikey)){
        aexm.pinterest(q)
-	.then(data => {
-		var result = data;
-		res.json({
-			result
-		})
-		})
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
          .catch(e => {
-         	console.log(e);
-         	res.sendFile(__path + '/docs/503.html')
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
 })
 } else {
   res.sendFile(__path + '/docs/403.html')
@@ -1930,10 +1930,36 @@ router.get('/search/wattpad', async (req, res, next) => {
 router.get('/search/lirik', async (req, res, next) => {
           var apikey = req.query.apikey
         var q = req.query.query
+        var d = req.query.artist
         if(!apikey) return res.sendFile(__path + '/docs/403.html')
        if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+       if (!d) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter artist"})      
          if(listkey.includes(apikey)){
-       aexm.lirik(q)
+       aexm.lirik(q, d)
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/search/image', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var q = req.query.query
+        var d = req.query.artist
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+       if (!d) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter artist"})      
+         if(listkey.includes(apikey)){
+       aexm.image(q, d)
   .then(data => {
     var result = data;
     res.json({
@@ -1955,7 +1981,7 @@ router.get('/search/cnn', async (req, res, next) => {
         if(!apikey) return res.sendFile(__path + '/docs/403.html')
        if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
          if(listkey.includes(apikey)){
-       aexm.lirik2(q)
+       aexm.delta(q)
   .then(data => {
     var result = data;
     res.json({
@@ -2941,13 +2967,13 @@ router.get('/live/trax', async (req, res, next) => {
 })
 
 
-router.get('/search/cnn', async (req, res, next) => {
+router.get('/search/cn', async (req, res, next) => {
           var apikey = req.query.apikey
         var q = req.query.query
         if(!apikey) return res.sendFile(__path + '/docs/403.html')
        if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
          if(listkey.includes(apikey)){
-       aexm.delta(q)
+       aexm.delta(query)
   .then(data => {
     var result = data;
     res.json({
