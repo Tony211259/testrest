@@ -583,7 +583,7 @@ router.get('/download/tiktok', async (req, res, next) => {
   res.sendFile(__path + '/docs/403.html')
 }
 })
-router.get('/download/ytmp3', async (req, res, next) => {
+router.get('/download/youtube', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.url
        	if(!apikey) return res.sendFile(__path + '/docs/403.html')
@@ -599,6 +599,27 @@ router.get('/download/ytmp3', async (req, res, next) => {
          .catch(e => {
          	console.log(e);
          	res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+router.get('/download/ytmp4', async (req, res, next) => {
+          var apikey = req.query.apikey
+          var url = req.query.url
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+        if(listkey.includes(apikey)){
+       aexm.ytmp4(url)
+      .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
 })
 } else {
   res.sendFile(__path + '/docs/403.html')
@@ -627,29 +648,7 @@ router.get('/download/ytsearch', async (req, res, next) => {
   res.sendFile(__path + '/docs/403.html')
 }
 })
-router.get('/download/ytmp4', async (req, res, next) => {
-          var apikey = req.query.apikey
-       	var url = req.query.url
-       	if(!apikey) return res.sendFile(__path + '/docs/403.html')
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
-        if(listkey.includes(apikey)){
-       fetch(encodeURI(`https://python-api-zhirrr.herokuapp.com/api/ytv?url=${url}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'Zeeone',
-                 result
-             })
-         })
-         .catch(e => {
-         	console.log(e);
-         	res.sendFile(__path + '/docs/503.html')
-})
-} else {
-  res.sendFile(__path + '/docs/403.html')
-}
-})
+
 //lk21
 router.get('/lk21/search', async (req, res, next) => {
           var apikey = req.query.apikey
@@ -1936,6 +1935,30 @@ router.get('/search/lirik', async (req, res, next) => {
        if (!d) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter artist"})      
          if(listkey.includes(apikey)){
        aexm.lirik(q, d)
+  .then(data => {
+    var result = data;
+    res.json({
+      result
+    })
+    })
+         .catch(e => {
+          console.log(e);
+          res.sendFile(__path + '/docs/503.html')
+})
+} else {
+  res.sendFile(__path + '/docs/403.html')
+}
+})
+
+router.get('/search/translate', async (req, res, next) => {
+          var apikey = req.query.apikey
+        var q = req.query.text
+        var d = req.query.too
+        if(!apikey) return res.sendFile(__path + '/docs/403.html')
+       if (!q) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})      
+       if (!d) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter to"})      
+         if(listkey.includes(apikey)){
+       aexm.trs(q, d)
   .then(data => {
     var result = data;
     res.json({
