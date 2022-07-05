@@ -4,7 +4,7 @@
   "description": "res api website",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm install jsdom && node index.js",
     "test": "start"
   },
   "repository": {
@@ -28,17 +28,20 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "genius-lyrics-api": "^3.2.0",
+    "google-translate-api": "^2.3.0",
+    "jsdom": "^20.0.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
     "monk": "^7.3.3",
     "morgan": "^1.10.0",
     "needle": "^2.6.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "qs": "^6.10.1",
     "request": "^2.88.2",
     "scrape-yt": "^1.4.8",
     "ssl-express-www": "^3.0.7",
+    "translate-google": "^1.5.0",
     "urlencode": "^1.1.0",
     "ytdl-core": "^4.11.0",
     "ytpl": "^2.0.5"
